@@ -140,12 +140,17 @@ class MattermostBackend(ErrBot):
 
         # In some cases (direct messages) team_id is an empty string
         if data["team_id"] != "" and self.teamid != data["team_id"]:
-            log.info(
-                "Message came from another team ({}), ignoring...".format(
+            # log.info(
+            #     "Message came from another team ({}), ignoring...".format(
+            #         data["team_id"]
+            #     )
+            # )
+            log.debug(
+                "Message came from another team ({}), answering it anyway...".format(
                     data["team_id"]
                 )
             )
-            return
+            # return
 
         broadcast = message["broadcast"]
 
